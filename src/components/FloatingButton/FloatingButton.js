@@ -1,31 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// /* eslint-disable */
-// function adultES5(age) {
-//   if (age > 18) {
-//     var status = 'adult';
-//   }
-//   console.log(status); // adult
-// }
-
-// function adultES6Let(age) {
-//   if (age > 18) {
-//     let status = 'adult';
-//     status = 'super hero';
-//     console.log(status); // super hero
-//   }
-//   console.log(status); // ReferenceError: status is not defined
-// }
-
-// function adultES6Const(age) {
-//   if (age > 18) {
-//     const status = 'adult';
-//     console.log(status); // adult
-//   }
-//   console.log(status); // ReferenceError: status is not defined
-// }
-
 class FloatingButton extends Component {
   state = {
     clicked: 0,
