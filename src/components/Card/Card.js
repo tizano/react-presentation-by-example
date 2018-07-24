@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
+import './Card.css';
 
 const Card = ({
   id, title, author, url,
 }) => (
-  <article style={{ padding: '1rem', margin: '1rem', border: '1px solid #282c34' }} id={id}>
+  <article className="card--container" id={id}>
     <header>
       <h2>{title}</h2>
     </header>
@@ -15,9 +16,9 @@ const Card = ({
     {url &&
       <p>
         URL : <a href={url} target="_blank" rel="noopener">{url}</a>
-        <Button text="Voir le détail" className="azerty" />
       </p>
     }
+    <Button text="Voir le détail" className="azerty" />
   </article>
 );
 

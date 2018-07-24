@@ -24,7 +24,10 @@ Button.defaultProps = {
 
 
 Button.propTypes = {
-  className: PropTypes.object,
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
   text: PropTypes.string.isRequired,
   bgColor: PropTypes.string,
   margin: PropTypes.string,

@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import injectSheet from 'react-jss';
+
+const styles = {
+  myButton: {
+    padding: props => ((props.padding) ? props.padding : '1rem'),
+    backgroundColor: props => props.bgColor,
+  },
+};
 
 const Box = ({
-  title, bgColor, padding, children,
+  classes, title, children,
 }) => (
   <div
-    style={{
-      backgroundColor: bgColor,
-      padding,
-    }}
+    className={classes.myButton}
   >
     <h2>
       { title }
@@ -18,16 +23,13 @@ const Box = ({
 );
 
 Box.defaultProps = {
-  bgColor: '#f65b54',
-  padding: '1rem',
   children: false,
 };
 
 Box.propTypes = {
+  classes: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  bgColor: PropTypes.string,
-  padding: PropTypes.node,
   children: PropTypes.node,
 };
 
-export default Box;
+export default injectSheet(styles)(Box);
