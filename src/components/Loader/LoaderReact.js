@@ -20,7 +20,6 @@ class LoaderReact extends Component {
 
     return (
       <div>
-        Loader React
         <Lottie
           options={defaultOptions}
           height={110}

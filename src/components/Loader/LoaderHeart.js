@@ -20,7 +20,6 @@ class LoaderHeart extends Component {
 
     return (
       <div>
-        Loader Heart
         <Lottie
           options={defaultOptions}
           height={140}

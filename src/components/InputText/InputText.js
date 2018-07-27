@@ -21,7 +21,7 @@ class InputText extends Component {
           onChange={this.handleChange}
         />
         {inputValue !== '' &&
-          <p>{`Valeur de l'input : ${inputValue}`}</p>
+          <span style={{ display: 'block' }}>{`Valeur de l'input : ${inputValue}`}</span>
         }
       </Fragment>
     );

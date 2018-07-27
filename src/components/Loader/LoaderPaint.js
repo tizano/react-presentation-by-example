@@ -20,7 +20,6 @@ class LoaderPaint extends Component {
 
     return (
       <div>
-        Loader Paint
         <Lottie
           options={defaultOptions}
           height={80}

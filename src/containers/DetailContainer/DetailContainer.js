@@ -1,50 +1,96 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import axios from 'axios';
-import LoaderCube from '../../components/Loader/LoaderCube';
+import { isEmpty } from 'ramda';
+import LoaderHeart from '../../components/Loader/LoaderHeart';
+import LoaderReact from '../../components/Loader/LoaderReact';
+import CustomLink from '../../components/CustomLink';
 import Card from '../../components/Card';
+import FloatingButton from '../../components/FloatingButton';
+import Modal from '../../components/Modal';
 
-class ListContainer extends Component {
+
+class DetailContainer extends Component {
   state = {
     loading: true,
     hits: [],
   };
 
   componentDidMount() {
-    // this.props.pathname.objectID // dispo avec react router
-    // axios.get(`https://hn.algolia.com/api/v1/items/${id}`)
-    axios.get('https://hn.algolia.com/api/v1/items/:itemID')
+    const { match } = this.props;
+    axios.get(`https://hn.algolia.com/api/v1/items/${match.params.itemId}`)
       .then((response) => {
-        const res = response.data.hits;
         this.setState({
           loading: false,
-          hits: res,
+          hits: response.data,
         });
+        localStorage.setItem('currentDetail', JSON.stringify(response.data));
       });
   }
 
   render() {
     const { loading, hits } = this.state;
+    const { modalOpen } = this.props;
+    const hitItem = JSON.parse(localStorage.getItem('currentDetail'));
     return (
       <Fragment>
         {loading &&
-          <LoaderCube />
+          <LoaderHeart />
         }
-        {!loading &&
-          <Fragment>
-            {hits.map(hit => (
-              <Card
-                key={hit.objectID}
-                id={hit.objectID}
-                title={hit.title}
-                author={hit.author}
-                url={hit.url}
-              />
-            ))}
-          </Fragment>
+        {!loading && !isEmpty(hits) &&
+          <Card
+            id={hits.id}
+            title={hits.title}
+            author={hits.author}
+            url={hits.url}
+            detail
+          />
         }
+
+        {modalOpen &&
+          <Modal>
+            {isEmpty(hitItem) &&
+              <LoaderReact />
+            }
+            {!isEmpty(hitItem) &&
+              <article id={hitItem.id}>
+                <header>
+                  <h2>{hitItem.title}</h2>
+                </header>
+                <p>
+                  Author : {hitItem.author}
+                </p>
+                {hitItem.url &&
+                  <p className="card--container-spacing">
+                    URL : <CustomLink
+                      link={hitItem.url}
+                      primary={parseInt(hitItem.id, 10) % 2 === 0}
+                      target="_blank"
+                      rel="noopener"
+                      text={hitItem.title}
+                    />
+                  </p>
+                }
+              </article>
+            }
+          </Modal>
+        }
+        <FloatingButton overlayColor="#f65b54">
+          Cliques sur moi !
+        </FloatingButton>
       </Fragment>
     );
   }
 }
 
-export default ListContainer;
+DetailContainer.propTypes = {
+  match: PropTypes.object.isRequired,
+  modalOpen: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => ({
+  modalOpen: state.modal.modalOpen,
+});
+
+export default connect(mapStateToProps)(DetailContainer);

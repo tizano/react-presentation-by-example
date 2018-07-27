@@ -20,7 +20,6 @@ class LoaderCube extends Component {
 
     return (
       <div>
-        Loader Cube
         <Lottie
           options={defaultOptions}
           height={180}
