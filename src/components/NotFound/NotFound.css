@@ -1,0 +1,17 @@
+.not-found {
+  background-color: #1d1d1d;
+  height: calc(100vh - 326px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 780px) {
+  .not-found {
+    height: calc(100vh - 224px);
+  }
+}
+
+.not-found > div {
+  transition: all .2s ease;
+}
