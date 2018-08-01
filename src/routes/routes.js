@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
 import Home from '../containers/HomeContainer';
 import List from '../containers/ListContainer';
 import Detail from '../containers/DetailContainer';
-import Contact from '../containers/ContactContainer';
+// import Contact from '../containers/ContactContainer';
 import NoMatch from '../containers/NoMatchContainer';
 // import Counter from '../components/Counter'
 // import NoMatch from '../components/NoMatch'
@@ -13,10 +13,13 @@ const routes = (
     {/* <NavBar /> */}
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/articles" component={List} />
+      <Route exact path="/articles" component={List} />
       <Route exact path="/articles/detail/:itemId" component={Detail} />
-      <Route path="/contact" component={Contact} />
-      <Route component={NoMatch} />
+      {/* <Route exact path="/404" component={NoMatch} /> */}
+      {/* <Route path="/contact" component={Contact} /> */}
+      {/* <Route component={NoMatch} /> */}
+      <Route exact path="/404" component={NoMatch} />
+      <Redirect to="/404" />
     </Switch>
   </div>
 );

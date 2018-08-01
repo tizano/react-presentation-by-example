@@ -30,7 +30,7 @@ class Card extends Component {
         }
         {!detail &&
           <Button
-            text="Voir le détail"
+            text="Voir le détaisasl"
             className="azerty"
             onClick={e => this.handleClick(id, e)}
           />

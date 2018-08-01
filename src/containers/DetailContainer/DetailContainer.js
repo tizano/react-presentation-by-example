@@ -19,6 +19,7 @@ class DetailContainer extends Component {
 
   componentDidMount() {
     const { match } = this.props;
+    console.log(this.props);
     axios.get(`https://hn.algolia.com/api/v1/items/${match.params.itemId}`)
       .then((response) => {
         this.setState({
