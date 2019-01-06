@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
 const EmotionObjectLink = styled('a')(props => ({
-  minWidth: '12rem',
+  width: '100%',
   margin: '0 auto 20px',
-  padding: props.primary ? 18 : 16,
+  letterSpacing: 'initial',
+  textTransform: 'initial',
+  padding: props.primary ? 16 : 12,
+  fontSize: '.8rem',
   borderRadius: 5,
   textDecoration: 'none',
   border: props.primary

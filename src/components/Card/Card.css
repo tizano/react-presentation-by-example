@@ -1,11 +1,73 @@
 .card--container {
+  overflow: hidden;
+  position: relative;
   padding: 1rem;
   margin: 1rem;
-  border: 1px solid #bbbfc5;
   border-radius: 5px;
-  box-shadow: 0px 10px 20px -2px rgba(80, 91, 109, 0.2)
+  box-shadow: 0px 10px 20px -2px rgba(80, 91, 109, 0.2);
+  background: #fafaf9;
+  transform: translate3d(0, 0, 0);
+  width: 600px;
+  height: 380px;
+  display: inline-block;
 }
 
 .card--container-spacing {
   margin: 2.5rem 1rem;
+}
+
+.wave {
+  opacity: .4;
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  background: #0af;
+  width: 660px;
+  height: 660px;
+  margin-left: -330px;
+  margin-top: -330px;
+  transform-origin: 50% 48%;
+  border-radius: 43%;
+  animation: drift 3000ms infinite linear;
+}
+
+.wave.-three {
+  animation: drift 5000ms infinite linear;
+}
+
+.wave.-two {
+  animation: drift 7000ms infinite linear;
+  opacity: .1;
+  background: yellow;
+}
+
+.card--container:after {
+  content: '';
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #ee88aa, rgba(221, 238, 255, 0) 80%, rgba(255, 255, 255, 0.5));
+  z-index: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.text {
+  width: 100%;
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  transform: translate3d(0, 0, 0);
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: .4em;
+  text-shadow: 0 1px 0 rgba(black, .1);
+  text-indent: .3em;
+}
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
 }

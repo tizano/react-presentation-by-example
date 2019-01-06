@@ -17,25 +17,30 @@ class Card extends Component {
 
     return (
       <article className="card--container" id={id}>
-        <header>
-          <h2>{title}</h2>
-        </header>
-        <p>
-          Author : {author}
-        </p>
-        {url &&
-          <p className="card--container-spacing">
-            URL : <CustomLink link={url} primary={parseInt(id, 10) % 2 === 0} target="_blank" rel="noopener" text={title} />
+        <div className="wave -one" />
+        <div className="wave -two" />
+        <div className="wave -three" />
+        <div className="text">
+          <header>
+            <h2>{title}</h2>
+          </header>
+          <p>
+            Author : {author}
           </p>
-        }
-        {!detail &&
-          <Button
-            text="Voir le détaisasl"
-            className="azerty"
-            onClick={e => this.handleClick(id, e)}
-          />
-        }
-        <em>Fait avec CSS Modules</em>
+          {url &&
+            <p className="card--container-spacing">
+              <small>URL</small> : <CustomLink link={url} primary={parseInt(id, 10) % 2 === 0} target="_blank" rel="noopener" text={title} />
+            </p>
+          }
+          {!detail &&
+            <Button
+              text="Voir le détail"
+              className="azerty"
+              onClick={e => this.handleClick(id, e)}
+            />
+          }
+          <em>Fait avec CSS Modules</em>
+        </div>
       </article>
     );
   }

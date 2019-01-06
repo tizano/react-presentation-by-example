@@ -7,17 +7,14 @@ import Contact from '../containers/ContactContainer';
 import NoMatch from '../containers/NoMatchContainer';
 
 const routes = (
-  <div>
-    {/* <NavBar /> */}
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/articles" component={List} />
-      <Route exact path="/articles/detail/:itemId" component={Detail} />
-      <Route path="/contact" component={Contact} />
-      <Route exact path="/404" component={NoMatch} />
-      <Redirect to="/404" />
-    </Switch>
-  </div>
+  <Switch>
+    <Route exact path="/" component={Home} />
+    <Route exact path="/articles" component={List} />
+    <Route exact path="/articles/detail/:itemId" component={Detail} />
+    <Route path="/contact" component={Contact} />
+    <Route exact path="/404" component={NoMatch} />
+    <Redirect to="/404" />
+  </Switch>
 );
 
 export default routes;

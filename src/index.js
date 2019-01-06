@@ -17,6 +17,7 @@ const render = () => {
     document.getElementById('root'),
   );
 };
+
 render();
 registerServiceWorker();
 

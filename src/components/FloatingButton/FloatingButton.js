@@ -1,7 +1,33 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import injectSheet from 'react-jss';
 import * as modalAction from '../../actions/modalAction';
+
+const styles = {
+  floatingBtn: {
+    fontSize: '1.2rem',
+    letterSpacing: '2px',
+    textTransform: 'uppercase',
+    display: 'inline-block',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    padding: '1rem 2rem',
+    border: '3px solid #FF0072',
+    backgroundColor: 'transparent',
+    color: '#FF0072',
+    borderRadius: 3,
+    position: 'relative',
+    margin: '.5em',
+    boxShadow: '0 2px 10px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.1)',
+    transition: '0.3s ease all',
+    '&:hover': {
+      cursor: 'pointer',
+      backgroundColor: '#ff0072',
+      color: '#ffffff',
+    },
+  },
+};
 
 class FloatingButtonContainer extends Component {
   state = {
@@ -20,7 +46,7 @@ class FloatingButtonContainer extends Component {
 
   render() {
     const {
-      bgColor, children, margin, padding,
+      children, margin, classes,
     } = this.props;
 
     const { clicked } = this.state;
@@ -29,13 +55,13 @@ class FloatingButtonContainer extends Component {
       <Fragment>
         <div style={{ margin }}>
           <button
-            style={{ backgroundColor: bgColor, padding }}
+            className={classes.floatingBtn}
             onClick={this.handleClick}
           >
             { children }
           </button>
           {clicked > 0 &&
-            <span>Tu viens de cliquer {clicked} fois</span>
+            <div>Tu viens de cliquer {clicked} fois</div>
           }
         </div>
       </Fragment>
@@ -44,17 +70,14 @@ class FloatingButtonContainer extends Component {
 }
 
 FloatingButtonContainer.defaultProps = {
-  bgColor: '#f65b54',
   children: false,
   margin: '1rem',
-  padding: '1rem',
 };
 
 FloatingButtonContainer.propTypes = {
-  bgColor: PropTypes.string,
+  classes: PropTypes.object.isRequired,
   children: PropTypes.node,
   margin: PropTypes.string,
-  padding: PropTypes.string,
   showModal: PropTypes.func.isRequired,
 };
 
@@ -64,4 +87,4 @@ const mapDispatchToProps = dispatch => ({
 
 const FloatingButton = connect(null, mapDispatchToProps)(FloatingButtonContainer);
 
-export default FloatingButton;
+export default injectSheet(styles)(FloatingButton);

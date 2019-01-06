@@ -11,6 +11,13 @@ class ListContainer extends Component {
   };
 
   componentDidMount() {
+    /* eslint-disable */
+    console.log('  ⁣👑');
+    console.log('  😎');
+    console.log('✌👕⁣✌');
+    console.log('  👖');
+    console.log(' 👟👟');
+    /* eslint-enable */
     // this.fetchDataPromise();
     this.fetchDataAsync();
     // Essais la fonction go() pour te procurer un max de plaisir

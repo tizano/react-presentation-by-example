@@ -1,12 +1,12 @@
-/** Constants */
+/* Constants */
 import { SHOW_MODAL, HIDE_MODAL } from '../actions/actionsTypes';
 
-/** Initial State */
+/* Initial State */
 const initialModalState = {
   modalOpen: false,
 };
 
-/** Modal reducer */
+/* Modal reducer */
 export default function (state = initialModalState, action) {
   const newState = Object.assign({}, state);
 
@@ -14,6 +14,10 @@ export default function (state = initialModalState, action) {
     case SHOW_MODAL:
       newState.modalOpen = action.modalOpen;
       break;
+      // return {
+      //   ...state,
+      //   modalOpen: action.modalOpen,
+      // };
 
     case HIDE_MODAL:
       return initialModalState;

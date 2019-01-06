@@ -4,8 +4,6 @@ import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
 import * as modalAction from '../../actions/modalAction';
 
-// import styled from 'styled-components';
-
 const styles = theme => ({
   modalOverlayDiv: {
     position: 'fixed',
@@ -90,8 +88,8 @@ class ModalContainer extends Component {
         >
           <div
             className={classes.modalDialogDiv}
-            onClick={this.onDialogClick}
-            onKeyPress={this.onDialogClick}
+            onClick={e => this.onDialogClick(e)}
+            onKeyPress={e => this.onDialogClick(e)}
             role="button"
             tabIndex="0"
           >
